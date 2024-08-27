@@ -1,0 +1,285 @@
+{%extends 'base.html'%}
+{%block table%}
+<table class="table">
+    <thead>
+        <br>
+        <br>
+        <h1 class="titulo">RA7</h1>
+        <tr>
+            <th>Nombre</th>
+            <th>Materia</th>
+            <th>Curso</th>
+            <th>Asistencia</th>
+            <th>P1</th>
+            <th>P2</th>
+            <th>P3</th>
+            <th>P4</th>
+            <th>P5</th>
+            <th>Cuaderno</th>
+            <th>Total</th>
+            <th>Recuperacion</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for r in ra7%}
+        <tr>
+            <td>{{r.1}}</td>
+            <td>{{r.2}}</td>
+            <td>{{r.3}}</td>
+            <td>{{r.4}}</td>
+            <td>{{r.4}}</td>
+            <td>{{r.6}}</td>
+            <td>{{r.7}}</td>
+            <td>{{r.8}}</td>
+            <td>{{r.9}}</td>
+            <td>{{r.10}}</td>
+            {%with suma = r.11|int + r.12|int + r.13|int%}
+                {%if suma < 7 %}
+                    <td style="color: red;">{{suma}}</td>
+                {%else%}
+                    <td>{{suma}}</td>
+                {%endif%}
+            {%endwith%}
+            <td>
+                {%with raR = r.11|int + r.12|int + r.13|int%}
+                    {%if raR < 7%}
+                    <a href="#" class="btn btn-dark" data-toggle="modal" data-target="#m1{{r.0}}">M1</a>
+                    <a class="btn btn-danger" data-toggle="modal" data-target="#m2{{r.0}}">M2</a>
+                    {%else%}
+                        <button disabled class="btn btn-dark">M1</button>
+                        <button disabled class="btn btn-danger">M2</button>
+                    {%endif%}
+                {%endwith%}
+            </td>
+            <td>
+              <a href="#" class="btn btn-success" data-toggle="modal" data-target="#editar{{r.0}}">A</a>
+            </td>
+               
+        </tr>
+    </tbody>
+        {%endfor%}
+</table>
+{%for r in ra7%}
+<div class="modal fade" id="m1{{r.0}}" tabindex="-1" role="dialog" aria-labelledby="agregarModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="agregarModalLabel">Momento1 Recuperacion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/M1ADD/{{r.0}}" method="post">
+          <div class="form-group">
+            <input type="text" name="m1" class="form-control" placeholder="Momento1">
+          </div>
+
+        
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </form>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--MOMENTO 2 RA1-->
+<div class="modal fade" id="m2{{r.0}}" tabindex="-1" role="dialog" aria-labelledby="agregarModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="agregarModalLabel">Momento2 Recuperacion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/M2ADD/{{r.0}}" method="post">
+          <div class="form-group">
+            <input type="text" name="m2" class="form-control" placeholder="Momento1">
+          </div>
+
+        
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </form>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+{%endfor%}
+
+
+
+<!-- Modal  editar calificaciones-->
+{%for r in ra7%}
+<div class="modal fade" id="editar{{r.0}}" tabindex="-1" role="dialog" aria-labelledby="agregarModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="agregarModalLabel">Editar Calificación</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" class="form-control" value="{{r.1}}">
+        </div>
+        <div class="form-group">
+          <label for="Materia">Materia</label>
+          <input type="text" class="form-control" value="{{r.2}}">
+        </div>
+        <div class="form-group">
+          <label for="curso">Curso</label>
+          <input type="text" class="form-control" value="{{r.3}}">
+        </div>
+       
+        <div class="form-group">
+          <label for="asistencia">Asistencia</label>
+          <input type="text" class="form-control" value="{{r.4}}">
+        </div>
+
+        <div class="form-group">
+          <label for="P1">P1</label>
+          <input type="text" class="form-control" value="{{r.5}}">
+        </div>
+       
+        <div class="form-group">
+          <label for="P2">P2</label>
+          <input type="text" class="form-control" value="{{r.6}}">
+        </div>
+       
+        <div class="form-group">
+          <label for="P3">P3</label>
+          <input type="text" class="form-control" value="{{r.7}}">
+        </div>
+       
+        <div class="form-group">
+          <label for="P4">P4</label>
+          <input type="text" class="form-control" value="{{r.8}}">
+        </div>
+       
+        <div class="form-group">
+          <label for="P5">P5</label>
+          <input type="text" class="form-control" value="{{r.9}}">
+        </div>
+       
+        <div class="form-group">
+          <label for="cuaderno">Cuaderno</label>
+          <input type="text" class="form-control" value="{{r.10}}">
+        </div>
+       
+   
+       
+       
+       
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{%endfor%}
+<!--AGREGAR ALUMNO-->
+<center>
+    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#agregarModal">Agregar</a>
+</center>
+
+<a href="{{ url_for('RA7_') }}" class="btn btn-dark">Desarrollo de Aplicaciones</a>
+
+<!-- Modal -->
+<div class="modal fade" id="agregarModal" tabindex="-1" role="dialog" aria-labelledby="agregarModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="agregarModalLabel">Agregar Calificación</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/RA7ADD" method="post">
+            <div class="form-group">
+              <label for="nombre">Nombre</label>
+             <select name="nombre" class="form-control">
+                {%for alumno in alumnos%}
+                <option value="{{alumno.1}}">{{alumno.1}}</option>
+                {%endfor%}
+             </select>
+            <div class="form-group">
+              <label for="materia">Materia</label>
+              <select name="materia" class="form-control">
+                {%for m in materias%}
+                <option value="{{m.1}}">{{m.1}}</option>
+                {%endfor%}
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="curso">Curso</label>
+              <select name="curso" class="form-control" >
+                {%for curso in cursos%}
+                <option value="{{curso.1}}">{{curso.1}}</option>
+                {%endfor%}
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="asistencia">Asistencia</label>
+              <input name="asistencia" type="text" class="form-control" id="asistencia" placeholder="Ingrese la cantidad de asistencias">
+            </div>
+            <div class="form-group">
+              <label for="p1">P1</label>
+              <input type="text" name="p1" class="form-control" id="p1" placeholder="Ingrese la calificación del P1" max="2">
+            </div>
+            <div class="form-group">
+              <label for="p2">P2</label>
+              <input name="p2" type="text" class="form-control" id="p2" placeholder="Ingrese la calificación del P2" max="2">
+            </div>
+            <div class="form-group">
+              <label for="p3">P3</label>
+              <input name="p3" type="text" class="form-control" id="p3" placeholder="Ingrese la calificación del P3" max="2">
+            </div>
+            <div class="form-group">
+              <label for="p4">P4</label>
+              <input name="p4" type="text" class="form-control" id="p4" placeholder="Ingrese la calificación del P4" max="2">
+            </div>
+            <div class="form-group">
+              <label for="p5">P5</label>
+              <input name="p5" type="text" class="form-control" id="p5" placeholder="Ingrese la calificación del P5" max="3">
+            </div>
+            <div class="form-group">
+              <label for="cuaderno">Cuaderno</label>
+              <input name="cuaderno" type="text" class="form-control" id="cuaderno" placeholder="Ingrese la calificación del cuaderno" max="3">
+            </div>
+         
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+{%endblock%}

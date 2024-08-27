@@ -1,0 +1,185 @@
+.cuenta{
+    text-decoration: none;
+    color: black;
+}
+
+.titulo{
+    font-size: 30px;
+    text-align: center;
+    padding: 5px;
+}
+.table{
+    margin: 10px;
+    padding: 4px;
+}
+.menu-dashboard {
+    background-color: #1b1c1e;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+  }
+  
+  /* Estilo para el logo */
+  .logo {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .logo img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  .logo span {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  /* Estilo para el botón de toggle */
+  .toggle {
+    display: none;
+    font-size: 1.5rem;
+    padding: 20px;
+    cursor: pointer;
+  }
+  
+  /* Estilo para el botón de búsqueda */
+  .input-search {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #333;
+  }
+  
+  .input-search i {
+    font-size: 1.5rem;
+    margin-right: 10px;
+  }
+  
+  .input-search .input {
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    font-size: 1rem;
+    margin-left: 10px;
+    width: 100%;
+  }
+  
+  /* Estilo para el menú */
+  .menu {
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+  
+  .enlace {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+    
+  }
+  
+  .enlace:hover {
+    background-color: #2c2d30;
+  }
+  
+  .enlace i {
+    font-size: 1.5rem;
+    margin-right: 10px;
+  }
+  
+  .enlace span {
+    font-size: 1rem;
+  }
+  
+  .content-wrapper {
+    display: flex;
+}
+
+.table-menu-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.menu-dashboard {
+    background-color: #1b1c1e;
+    color: #fff;
+    width: 20%;
+}
+
+.table-wrapper {
+    width: 80%;
+}
+
+#enlance{
+  text-decoration: none;
+  color: white;
+}
+#imgL{
+  border-radius: 2rem;
+}
+
+#boton{
+  width: 40px;
+}
+
+.menu-lateral {
+  font-family: cursive;
+  background-color:  #1b1c1e;
+  position: fixed;
+  top: 70%;
+  right: 0;
+  transform: translateY(-50%);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  padding: 10px;
+  border-radius: 2rem;
+}
+
+.menu-lateral ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-lateral li {
+  margin-bottom: 10px;
+}
+
+.menu-lateral li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+
+#clave{
+  background-color: black;
+  border-radius: 3rem;
+  font-weight: bold;
+  color: white;
+  margin: 5px;
+}
+
+#Logout{
+  background-color: red;
+  font-weight: bold;
+  color: white;
+  border-radius: 3rem;
+  margin: 5px;
+}
+
+#clave:hover{
+  box-shadow: 0 0 0 3px red;
+}
+
+#Logout:hover{
+  box-shadow: 0 0 0 3px black;
+}
+
+#queja{
+  text-decoration: none;
+}

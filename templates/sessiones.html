@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+
+{%block table%}
+<table class="table">
+    <br>
+    <br>
+    <h2 class="titulo">Sessiones</h2>
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>IP</th>
+            <th>Rol</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+    {%for se in s%}
+        <tr>
+            <td style="color: blue; font-weight: bold;">{{se.1}}</td>
+            <td style="color: red; font-weight: bold;">{{se.2}}</td>
+            <td>{{se.3}}</td>
+            <td>{{se.4}}</td>
+        </tr>
+    </tbody>
+    {%endfor%}
+</table>
+<center>
+<a href="{{ url_for('sessiones_generar_informe') }}" class="btn btn-danger">Reporte</a>
+</center>
+{%endblock%}

@@ -1,0 +1,61 @@
+{%extends 'base.html'%}
+
+{%block table%}
+<div class="container">
+    <table class="table">
+        <thead>
+            <br>
+            <br>
+            <h1 class="titulo" >Cursos</h1>
+            <br>
+            <tr>
+            <tr>
+                <th>ID</th>
+                <th>Curso</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {%for c in curso%}
+            <tr>
+                <td>{{c.0}}</td>
+                <td>{{c.1}}</td>
+                <td>
+                    <a href="" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+            {%endfor%}
+    </table>
+    <br>
+</div>
+
+
+<div class="modal fade" id="controlModal" tabindex="-1" role="dialog" aria-labelledby="agregarModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="agregarModalLabel">Agregar Alumnos</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form action="/ADDCURSO" method="post">
+                <div class="form-group">
+                    <input type="text" name="curso" placeholder="Nombre del curso" class="form-control">
+                </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-success">Guardar</button>
+        </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+{%endblock%}

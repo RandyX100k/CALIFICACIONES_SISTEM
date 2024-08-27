@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block table%}
+<div class="container">
+    <table class="table">
+        <thead>
+            <br>
+            <br>
+            <h1 class="titulo" >Panel Administrador</h1>
+            <br>
+            <tr>
+                <th>Usuario</th>
+                <th>Nombre Completo</th>
+                <th>Email</th>
+                <th>Clave</th>
+                <th>Rol</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        {%for u in users%}
+        <tbody>
+            <tr>
+                <td>{{u.1}}</td>
+                <td>{{u.2}}</td>
+                <td>{{u.3}}</td>
+                <td>{{u.4}}</td>
+                <td>{{u.5}}</td>
+                <td>{{u.6}}</td>
+                <td>
+                    {%if u.5 == 'user'%}
+                        <a href="#" class="btn btn-success" data-toggle="modal" data-target="#editar{{u.0}}">Editar</a>
+                        <a href="" class="btn btn-danger" data-toggle="modal" data-target="#eliminar{{u.0}}">Eliminar</a>
+                    {%else%}
+                        <button class="btn btn-success" disabled>Editar</button>
+                        <button class="btn btn-danger" disabled>Eliminar</button>
+
+                    {%endif%}
+                </td>
+            </tr>
+            
+        <div class="modal fade" id="editar{{u.0}}" tabindex="-1" role="dialog" aria-labelledby="agregarModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="agregarModalLabel">Editar</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/editarUser/{{u.0}}" method="post">
+                    <div class="form-group">
+                        <label for="">Usuario</label>
+                        <input type="text" name="usuario" class="form-control" value="{{u.1}}">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="clave" class="form-control" value="{{u.3}}">
+                    </div>                 
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  <button type="submit" class="btn btn-success">Guardar</button>
+                    </form>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!--Eliminar-->
+        </tbody>
+        <div class="modal fade" id="eliminar{{u.0}}" tabindex="-1" role="dialog" aria-labelledby="agregarModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="agregarModalLabel">Eliminar</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <form action="/eliminarUser/{{u.0}}" method="post">
+                            <p>Estas seguro de eliminar este usuario: {{u.2}}?</p>
+                    </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                  <button type="submit" class="btn btn-success">Aceptar</button>
+                </form>
+                </div>
+              </div>
+            </div>
+        </div>
+        </div>
+       
+        {%endfor%}
+        
+    </table>
+    <br>
+    </div>
+
+{% endblock %}
+
+
+
+
+
+

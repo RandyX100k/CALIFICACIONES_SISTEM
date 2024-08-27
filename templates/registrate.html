@@ -1,0 +1,52 @@
+{%extends 'base.html'%}
+
+{%block title%} Registrate {%endblock%}
+{%block m%}
+{%endblock%}
+{%block content%}
+<br>
+<h1 style="text-align: center; font-size: 25px;">Sistema de calificaciones RA</h1>
+<div class="row justify-content-center mt-5 p-2">
+<div class="col-md-6">
+<div class="card shadow-lg">
+<div class="card-body">
+<h2 class="card-title text-center mb-4">Registrate</h2>
+<form action="/registrate" method="post">
+<div class="form-group">
+    <label for="usuario">Usuario</label>
+    <input type="text" name="usuario" class="form-control" placeholder="Ingresa tu usuario">
+</div>
+
+<div class="form-group">
+    <label for="usuario">Nombre Completo</label>
+    <input type="text" name="nombre" class="form-control" placeholder="Ingresa tu Nombre Completo">
+</div>
+
+<div class="form-group">
+    <label for="email">Correo Electronico</label>
+    <input type="email" name="email" class="form-control" placeholder="Ingresa tu correo electronico">
+</div>
+
+<div class="form-group">
+    <label for="clave">Contraseña</label>
+    <input type="password" name="clave" class="form-control" placeholder="Ingresa tu contraseña">
+</div>
+<label for="rol">rol</label>
+    <select name="rol" id="" class="form-control">
+        <option value="user" >user</option>
+    </select>   
+<center>
+    <button class="btn btn-lg btn-dark btn-block mt-4">Registrar</button>
+    <br>
+    <br>
+    <a href="{{ url_for('Index') }}" class="cuenta">Ya tienes Cuenta</a>
+</center>
+
+
+</div>
+</div>
+</div>
+</div>
+</form>
+
+{%endblock%}

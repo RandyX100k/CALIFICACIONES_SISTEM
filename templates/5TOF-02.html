@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% block table %}
+<div class="container">
+  <table class="table" id="tablaC">
+    <br>
+    <br>
+    <h1 class="titulo">Curso 5TOF-02</h1>
+    <br>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Curso</th>
+        <th>Materia</th>
+        <th>RA1</th>
+        <th>RA2</th>
+        <th>RA3</th>
+        <th>RA4</th>
+        <th>RA5</th>
+        <th>RA6</th>
+        <th>RA7</th>
+        <th>RA8</th>
+        <th>RA9</th>
+        <th>RA10</th>
+        <th>P</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for r in curso%}
+      <tr>
+        <td>{{r.1}}</td>
+        <td>{{r.2}}</td>
+        <td>{{r.3}}</td>
+        {%if r.4|int < 1%}
+          <td>0</td>
+        {%else%}
+          <td>{{r.4}}</td>
+        {%endif%}
+        {%if r.5|int < 1%}
+          <td>0</td>
+        {%else%}
+          <td>{{r.5}}</td>
+        {%endif%}
+        {%if r.6|int < 1%}
+          <td>0</td>
+        {%else%}
+          <td>{{r.6}}</td>
+        {%endif%}
+        {%if r.7|int < 1%}
+          <td>0</td>
+        {%else%}
+          <td>{{r.7}}</td>
+        {%endif%}
+        {%if r.8|int < 1%}
+          <td>0</td>
+        {%else%}
+          <td>{{r.8}}</td>
+        {%endif%}
+
+        {%if r.9|int < 1%}
+          <td>0</td>
+        {%else%}
+          <td>{{r.9}}</td>
+        {%endif%}
+        
+        {%if r.10|int < 1%}
+          <td>0</td>
+        {%else%}
+          <td>{{r.10}}</td>
+        {%endif%}
+        {%if r.11|int < 1%}
+          <td>0</td>
+        {%else%}
+          <td>{{r.11}}</td>
+        {%endif%}
+        {%if r.12|int < 1%}
+          <td>0</td>
+        {%else%}
+          <td>{{r.12}}</td>
+        {%endif%}
+        {%if r.13|int < 1%}
+          <td>0</td>
+        {%else%}
+          <td>{{r.13}}</td>
+        {%endif%}
+        {% with suma = r.4|int + r.5|int + r.6|int + r.7|int + r.8|int + r.9|int + r.10|int + r.11|int + r.12|int + r.13|int %}
+        <td>{{suma}}</td>
+        {%endwith%}
+        {% with suma = r.4|int + r.5|int + r.6|int + r.7|int + r.8|int + r.9|int + r.10|int + r.11|int + r.12|int + r.13|int %}
+          {% if suma < 70 %}
+            <td style="color: red; font-weight: bold;">R</td>
+          {% else %}
+            <td style="color: blue; font-weight: bold;">A</td>
+          {% endif %}
+        {% endwith %}
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+  <center>
+    <a href="{{ url_for('calificaciones') }}" class="btn btn-success">Administrar</a>
+  </center>
+</div>
+
+{% endblock %}
+
+{%block content%}
+<div class="menu-lateral">
+    <ul>
+      <li><a href="{{ url_for('calificaciones') }}">5TOF-01</a></li>
+      <li style="text-align: center;"><a href="#">6F</a></li>
+    </ul>
+  </div>
+
+
+{%endblock%}    

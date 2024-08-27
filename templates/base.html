@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%} {%endblock%}</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='boostrap/bootstrap.min.css')}}">
+    <script src="{{ url_for('static',filename='estilos.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='estilos.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="flash-messages">
+  {%block menu%}
+  {%endblock%}
+    {%with m = get_flashed_messages()%}
+    {%for me in m %}
+    {%if me%}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <p>{{me}}</p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    {%endif%}
+    {%endfor%}
+    {%endwith%}
+</div>
+    <div class="container">
+        {%block content%}
+        {%endblock%}
+   
+    </div>
+    {%block m%}
+    <div class="content-wrapper">
+      <div class="table-menu-wrapper">
+          <div class="menu-dashboard">
+              <div class="top-menu">
+                  <div class="logo">
+                      <img id="imgL" src="{{ url_for('static',filename='img/logo.png') }}">
+                      <span>Calificaciones</span>
+                  </div>
+                  <div class="toggle">
+                      <i class='bx bx-menu'></i>
+                  </div>
+              </div>
+              <!-- INPUT SEARCH -->
+              <div class="input-search">
+                  <i class='bx bx-home'></i>
+                  <a href="{{ url_for('Admin') }}" id="enlance"><span>Home</span></a>
+              </div>
+              <!-- MENU -->
+              <div class="menu">
+                  <div class="enlace">
+                      <i  class="bx bx-grid-alt" ></i>
+                      <a id="enlance" href="{{ url_for('calificaciones') }}"><span>Calificaciones</span></a>
+                  </div>
+          
+                  <div class="enlace">
+                      <i class="bx bx-user"></i>
+                      <a href="{{ url_for('alumnos') }}" id="enlance"><span>Alumnos</span></a>
+                  </div>
+          
+                  <div class="enlace">
+                      <i class="bx bx-grid-alt"></i>
+                      <a href="{{ url_for('Sessiones') }}" id="enlance"><span>Sessiones</span></a>
+                  </div>
+          
+                  <div class="enlace">
+                      <i class="bx bx-message-square"></i>
+                      <span>Quejas</span>
+                  </div>
+          
+                  <div class="enlace">
+                      <i class="bx bx-file-blank"></i>
+                    <a href="{{ url_for('Materias') }}" id="enlance"><span>Materias</span></a>
+                  </div>
+          
+                  <div class="enlace">
+                      <i class="bx bx-cart"></i>
+                      <a href="{{ url_for('Cursos') }}" id="enlance"><span>Cursos</span></a>
+                  </div>
+          
+                  <div class="enlace">
+                      <i class="bx bx-heart"></i>
+                      <span>Ayudas</span>
+                  </div>
+          
+                  <div class="enlace">
+                      <i class="bx bx-exit"></i>
+                      <a href="{{ url_for('Logout') }}" id="enlance"><span>Cerrar Session</span></a>
+                  </div>
+              </div>
+          </div>
+          {%endblock%}
+          
+          <div class="table-wrapper">
+            <div class="container">
+           {%block table%}
+           {%endblock%}
+           
+
+            </div>
+          </div>
+          
+      </div>
+       
+  </div>
+
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script src="{{url_for('static',filename='animacion.js')}}"></script>
+
+   
+{%block script%}
+{%endblock%}
+<script>
+    // Ocultar el mensaje de flash después de 3 segundos
+    setTimeout(function() {
+      var flashMessages = document.getElementById("flash-messages");
+      if (flashMessages) {
+        flashMessages.style.display = "none";
+      }
+    }, 2000);
+  </script>
+
+
+</body>
+</html>

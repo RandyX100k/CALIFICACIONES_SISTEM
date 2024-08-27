@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+{%block table%}
+<div class="container">
+    <table class="table">
+        <thead>
+            <br>
+            <br>
+            <h1 class="titulo" >Materias</h1>
+            <br>
+            <tr>
+            <tr>
+                <th>ID</th>
+                <th>Materia</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for m in materias%}
+            <tr>
+                <td>{{m.0}}</td>
+                <td>{{m.1}}</td>
+                <td>
+                    <a href="" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+            {%endfor%}
+    </table>
+     
+</div>
+
+
+{%endblock%}

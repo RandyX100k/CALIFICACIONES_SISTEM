@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block m %}
+
+{% endblock %}
+
+{% block content %}
+<nav id="menuL" class="navbar navbar-expand-lg">
+    {%for users in Alumnor%}
+    <a class="navbar-brand" href="#">{{users.1}}</a>
+    {%endfor%}
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" id="clave"  href="">Cambiar clave</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="Logout" href="{{ url_for('Logout') }}">Cerrar sesión</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<br>
+<h1 class="titulo">Bienvenido {{ user_ }}</h1>
+<br>
+<h2 class="titulo">Calificaciones</h2>
+<br>
+<div class="table">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Curso</th>
+                <th>Materia</th>
+                <th>RA1</th>
+                <th>RA2</th>
+                <th>RA3</th>
+                <th>RA4</th>
+                <th>RA5</th>
+                <th>RA6</th>
+                <th>RA7</th>
+                <th>RA8</th>
+                <th>RA9</th>
+                <th>RA10</th>
+                <th>Promedio</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for users in Alumno %}
+            <tr>
+                <td>{{ users.1 }}</td>
+                <td>{{ users.2 }}</td>
+                <td>{{ users.3 }}</td>
+                <td>{{ users.4 }}</td>
+                <td>{{ users.5 }}</td>
+                <td>{{ users.6 }}</td>
+                <td>{{ users.8 }}</td>
+                <td>{{ users.7 }}</td>
+                <td>{{ users.9 }}</td>
+                <td>{{ users.10 }}</td>
+                <td>{{ users.11 }}</td>
+                <td>{{ users.12 }}</td>
+                <td>{{ users.13 }}</td>
+                {% with suma = users.4|int + users.5|int + users.6|int + users.7|int + users.8|int + users.9|int + users.10|int + users.11|int + users.12|int + users.13|int %}
+                <td>{{ suma }}</td>
+                {% if suma < 70 %}
+                <td style="color: red; font-weight: bold;">R</td>
+                {% else %}
+                <td style="color: blue; font-weight: bold;">A</td>
+                {% endif %}
+                {% endwith %}
+            </tr>
+            
+        </tbody>
+            {%endfor%}
+    </table>
+</div>
+<br>
+<center>
+<a href="" class="btn btn-dark" style="border-radius: 3rem;">Desarrollo de Aplicaciones</a>
+</center>
+<br>
+<center>
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted">Todos los derechos reservados a RandyX</span>
+        <br>
+        <p>No estas de acuerdo con tu calificacion?</p>
+        <a href="" id="queja">Envianos un mensaje</a>
+    </div>
+</footer>
+</center>
+
+{% endblock %}

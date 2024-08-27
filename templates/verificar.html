@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+
+{%block title%} Sistema RandyX{%endblock%}
+{%block m%}
+{%endblock%}
+{%block content%}
+<div class="row justify-content-center mt-5 p-2">
+    <div class="col-md-6">
+    <div class="card shadow-lg">
+    <div class="card-body">
+    <form action="/confirmar" method="post">
+        <h3 class="card-title text-center mb-4">Confirma tu correo electronico</h3>
+        <div class="form-group">
+        <center>
+        <label for="email">{{email}}</label>
+        </center>
+        </div>
+        <div class="form-group">
+        <span>Codigo</span>
+        <input name="codigo" type="text" class="form-control" placeholder="Ingresa el codigo enviado a tu correo">
+        <center>
+        <button type="submit" class="btn btn-lg btn-dark btn-block mt-4">Ingresar</button>
+        </center>
+        <br>
+        <br>
+    </form>
+    </div>
+    </div>
+    </div>
+</div>
+{%endblock%}
